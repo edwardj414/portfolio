@@ -1,0 +1,52 @@
+/* ── DOT ── */
+.cursor-dot {
+  position: fixed;
+  width: 7px;
+  height: 7px;
+  background: var(--cyan);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px var(--cyan), 0 0 16px rgba(0,212,255,0.5);
+  transition: transform 0.1s ease, background 0.2s ease, box-shadow 0.2s ease;
+  will-change: left, top;
+}
+.cursor-dot--click {
+  transform: translate(-50%, -50%) scale(0.5);
+  background: var(--violet-bright);
+  box-shadow: 0 0 12px var(--violet-bright), 0 0 30px rgba(168,85,247,0.6);
+}
+
+/* ── RING ── */
+.cursor-ring {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(0, 212, 255, 0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition:
+    width    0.25s cubic-bezier(0.16,1,0.3,1),
+    height   0.25s cubic-bezier(0.16,1,0.3,1),
+    border   0.25s ease,
+    background 0.25s ease;
+  will-change: left, top;
+}
+
+/* Hover state — ring expands and fills slightly */
+.cursor-ring--hover {
+  width: 20px;
+  height: 20px;
+  border-color: var(--violet-bright);
+  border-width: 1px;
+  background: rgba(168, 85, 247, 0.06);
+}
+
+/* On touch/mobile hide custom cursor */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-dot, .cursor-ring { display: none; }
+  *, *::before, *::after { cursor: auto !important; }
+}

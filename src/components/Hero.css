@@ -1,0 +1,250 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+  padding: 120px 0 100px;
+}
+
+/* Clip only the matrix canvas so it doesn't overflow */
+.hero__matrix-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Orbs */
+.hero__orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  z-index: 0;
+  animation: orbFloat 10s ease-in-out infinite;
+}
+.hero__orb--cyan   { width: 480px; height: 480px; top: -80px; right: -60px; background: rgba(0, 212, 255, 0.07); }
+.hero__orb--violet { width: 360px; height: 360px; bottom: 40px; left: -80px; background: rgba(124, 58, 237, 0.08); animation-delay: -5s; }
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0,0); }
+  50%       { transform: translate(20px, -30px); }
+}
+
+/* Inner layout */
+.hero__inner {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* System line */
+.hero__sys-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.hero__sys-text {
+  font-family: var(--font-code);
+  font-size: 0.65rem;
+  color: var(--cyan-dim);
+  letter-spacing: 0.18em;
+}
+
+/* Greeting */
+.hero__greeting {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+/* Name with glitch */
+.hero__name {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 8vw, 6.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  color: var(--text);
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+/* Role line */
+.hero__role-line {
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  font-weight: 500;
+  color: var(--cyan);
+  margin-bottom: 28px;
+  min-height: 1.8em;
+  letter-spacing: 0.05em;
+}
+.hero__role-bracket { color: var(--violet-bright); opacity: 0.7; }
+.hero__cursor { color: var(--cyan); }
+
+/* Bio */
+.hero__bio {
+  font-family: var(--font-body);
+  font-size: 0.97rem;
+  line-height: 1.85;
+  color: var(--text-muted);
+  margin-bottom: 36px;
+  max-width: 500px;
+}
+.hero__hl { color: var(--cyan); font-weight: 600; }
+
+/* Actions */
+.hero__actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 52px;
+}
+
+/* Stats */
+.hero__stats {
+  display: flex;
+  gap: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+}
+.hero__stat { display: flex; flex-direction: column; gap: 4px; }
+.hero__stat-val {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--cyan);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.hero__stat-lbl {
+  font-family: var(--font-display);
+  font-size: 0.52rem;
+  letter-spacing: 0.22em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* Terminal */
+.hero__terminal {
+  position: relative;
+}
+
+.hero__term-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(0,212,255,0.03);
+}
+.hero__term-dots { display: flex; gap: 6px; }
+.hero__term-dots span { width: 10px; height: 10px; border-radius: 50%; display: block; }
+.hero__term-title {
+  font-family: var(--font-code);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  flex: 1;
+  text-align: center;
+}
+.hero__term-ping {
+  font-family: var(--font-display);
+  font-size: 0.5rem;
+  color: var(--cyan);
+  letter-spacing: 0.2em;
+  animation: blink 2s ease-in-out infinite;
+}
+
+.hero__code {
+  padding: 20px;
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  white-space: pre;
+  overflow-x: auto;
+}
+
+.hero__term-glow {
+  position: absolute;
+  bottom: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 80%; height: 60px;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Badges */
+.hero__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* Scroll indicator */
+.hero__scroll {
+  position: absolute;
+  bottom: 32px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+}
+.hero__scroll-label {
+  font-family: var(--font-display);
+  font-size: 0.48rem;
+  letter-spacing: 0.4em;
+  color: var(--text-dim);
+}
+.hero__scroll-line {
+  width: 1px; height: 48px;
+  background: var(--border);
+  overflow: hidden;
+  position: relative;
+}
+.hero__scroll-fill {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, var(--cyan), var(--violet-bright));
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%   { height: 0; top: 0; }
+  50%  { height: 100%; top: 0; }
+  100% { height: 0; top: 100%; }
+}
+
+@media (max-width: 960px) {
+  .hero__inner { grid-template-columns: 1fr; gap: 40px; }
+  .hero__right { order: -1; }
+}
+@media (max-width: 480px) {
+  .hero__stats { gap: 20px; }
+  .hero__actions { flex-direction: column; }
+}
+
+/* Matrix canvas inside wrap */
+.hero__matrix {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  opacity: 0.18;
+  z-index: 0;
+}
