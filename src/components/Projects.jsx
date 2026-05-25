@@ -13,6 +13,7 @@ const PROJECTS = [
     live: 'https://pyplatform.vercel.app/',
     siteUrl: 'https://pyplatform.vercel.app/',
     github: 'https://github.com/edwardj414/pyplatform',
+    slide: 'https://docs.google.com/presentation/d/1wzz7AcXHieIAn_yEbt9jrUwFD70-zZaSc0-DnRqioN8/edit?usp=sharing',
     tags: ['Django', 'DRF', 'React', 'Vite', 'Tailwind', 'PostgreSQL', 'Railway', 'Vercel'],
     stats: [{ k: 'Lessons', v: '35+' }, { k: 'Topics', v: '17' }, { k: 'Engine',    v: 'XP Quiz' }],
     accent: 'var(--emerald-bright)',
@@ -125,6 +126,7 @@ function FeaturedCard({ p, flip }) {
         <div className="pf-card__actions">
           <a href={p.live} target="_blank" rel="noreferrer" className="btn btn-primary">Live Demo ↗</a>
           <a href={p.github} target="_blank" rel="noreferrer" className="btn btn-outline">GitHub</a>
+          <a href={p.slide} target="_blank" rel="noreferrer" className="btn btn-outline">Presentation</a>
         </div>
       </div>
 
